@@ -188,13 +188,13 @@ class RentManage:
         
     
     def __del__(self):
-        db = pymysql.connect("localhost", "root", "Cx198512", "carmanagasys")
+        db     = pymysql.connect("localhost", "root", "Cx198512", "carmanagasys")
         cursor = db.cursor()
-        sql = "Delete from tb_sedan"
+        sql    = "Delete from tb_sedan"
         cursor.execute(sql)
-        sql = "Delete from tb_bus"
+        sql    = "Delete from tb_bus"
         cursor.execute(sql)
-        sql = "Delete from tb_truck"
+        sql    = "Delete from tb_truck"
         cursor.execute(sql)
         
         for newcar in self.car_list:
