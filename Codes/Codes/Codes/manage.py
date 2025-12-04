@@ -5,6 +5,7 @@ from truck       import Truck
 from sedan       import Sedan
 from bus         import Bus
 
+
 class RentManage:
     def __init__(self):
         self.car_list = []
