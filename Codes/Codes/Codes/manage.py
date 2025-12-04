@@ -202,4 +202,4 @@ class RentManage:
                 addcar = (newcar.car_number, newcar.car_owner, newcar.contact_way, newcar.car_brand, newcar.car_seats, newcar.rented, newcar.basic_charge, newcar.charge_day, newcar.date_rent, newcar.date_return)
                 cursor.execute("Insert into tb_sedan (car_number, car_owner, contact_way, car_brand, car_seats, rented, basic_charge, charge_day, date_rent, date_return) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", addcar)
                 
-                
+        
