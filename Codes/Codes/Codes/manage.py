@@ -8,6 +8,30 @@ from bus         import Bus
 class RentManage:
     def __init__(self):
         self.car_list = []
+        db = pymysql.connect("localhost", "root", "Cx198512", "carmanagasys")
+        cursor = db.cursor()
+        
+        cursor.execute("SELECT * FROM tb_sedan")
+        results = cursor.fetchall()
+        
+        for item in results:
+            onesedan = Sedan(item[0], item[1], item[2], item[3], item[4])
+            self.car_list.append(onesedan)
+            
+        cursor.execute("SELECT * FROM tb_bus")
+        results = cursor.fetchall()
+        
+        for item in results:
+            onebus = Bus(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7])
+            self.car_list.append(onebus)   
+            
+        cursor.execute("SELECT * FROM tb_truck")
+        results = cursor.fetchall()
+        
+        for item in results:
+            onetruck = Truck(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8])
+            self.car_list.append(onetruck)
+            
         
     def menu(self):
         
@@ -161,6 +185,7 @@ class RentManage:
                 
         print("租车行共计车辆" + str(Car.car_count))
         
+    
     def __del__(self):
         db = pymysql.connect("localhost", "root", "Cx198512", "carmanagasys")
         cursor = db.cursor()
@@ -175,4 +200,5 @@ class RentManage:
             if isinstance(newcar, Sedan):
                 addcar = (newcar.car_number, newcar.car_owner, newcar.contact_way, newcar.car_brand, newcar.car_seats, newcar.rented, newcar.basic_charge, newcar.charge_day, newcar.date_rent, newcar.date_return)
                 cursor.execute("Insert into tb_sedan (car_number, car_owner, contact_way, car_brand, car_seats, rented, basic_charge, charge_day, date_rent, date_return) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", addcar)
+                
                 
